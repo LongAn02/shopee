@@ -1,0 +1,14 @@
+<?php
+
+namespace App\Domains\{{modelName}}\Http\Controllers;
+
+use App\Http\Controllers\Controller;
+use App\Domains\{{modelName}}\Models\{{modelName}};
+
+/**
+ * @package App\Domains\{{modelName}}\Http\Controllers\{{modelName}}Controller
+ */
+class {{modelName}}Controller extends Controller
+{
+
+}

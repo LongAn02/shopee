@@ -1,0 +1,8 @@
+<?php
+
+namespace App\Domains\{{modelName}}\Traits\Relationships;
+
+class {{modelName}}Relationship
+{
+
+}

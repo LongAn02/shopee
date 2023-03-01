@@ -1,0 +1,8 @@
+<?php
+
+namespace App\Domains\{{modelName}}\Enums;
+
+enum {{modelName}}Enum: string
+{
+
+}
