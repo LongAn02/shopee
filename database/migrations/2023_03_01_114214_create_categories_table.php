@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('category_id');
             $table->string('name')->nullable(false);
-            $table->integer('parent_id')->unsigned();
+            $table->integer('parent_id')->nullable()->unsigned();
             $table->integer('sequence')->unsigned();
             $table->text('description')->nullable();
             $table->tinyInteger('status')->nullable();
