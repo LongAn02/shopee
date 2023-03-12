@@ -57,6 +57,7 @@ class FrameCommand extends Command
         $this->controller($name);
         $this->request($name);
         $this->service($name);
+        $this->interface($name);
 
         $this->info("The create Domains/{$name} command was successful!");
 
@@ -156,5 +157,18 @@ class FrameCommand extends Command
             $this->getStub('Service')
         );
         file_put_contents(app_path("/Domains/{$name}/Services/{$name}Service.php"), $requestTemplate);
+    }
+
+    protected function interface($name)
+    {
+        if(!file_exists($path = app_path("/Domains/{$name}/Services"))) {
+            mkdir($path, 0777, true);
+        }
+        $requestTemplate = str_replace(
+            ['{{modelName}}'],
+            [$name],
+            $this->getStub('Interface')
+        );
+        file_put_contents(app_path("/Domains/{$name}/Services/{$name}ServiceInterface.php"), $requestTemplate);
     }
 }
