@@ -2,18 +2,16 @@
 
 namespace App\Domains\Category\Traits\Relationships;
 
-use App\Domains\Category\Models\Category;
+use App\Domains\Category\Models\SubCategory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait CategoryRelationship
 {
     /**
-     * Retrieve subcategories
-     *
      * @return HasMany
      */
-    public function children(): HasMany
+    public function subCategory(): HasMany
     {
-        return $this->hasMany(Category::class, 'parent_id', 'category_id')->with('children');
+        return $this->hasMany(SubCategory::class, 'category_id', 'category_id');
     }
 }

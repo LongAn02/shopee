@@ -24,12 +24,10 @@ class Category extends Model
     protected $table = 'categories';
     protected $primaryKey = 'category_id';
     protected $keyType = 'integer';
+
     public $incrementing = true;
     protected $fillable = [
         'name',
-        'parent_id',
-        'sequence',
         'description',
-        'status'
     ];
 }
