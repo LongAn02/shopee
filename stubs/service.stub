@@ -1,0 +1,14 @@
+<?php
+
+namespace Modules\{{nameModule}}\Services;
+
+use App\Services\BaseService;
+use Modules\{{nameModule}}\Interfaces\{{nameService}}ServiceInterface;
+
+class {{nameService}}Service extends BaseService implements {{nameService}}ServiceInterface
+{
+    public function __construct({{nameModule}} $model)
+    {
+        $this->model = $model;
+    }
+}

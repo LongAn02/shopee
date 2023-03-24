@@ -1,0 +1,8 @@
+<?php
+
+namespace Modules\{{nameModule}}\Interfaces;
+
+interface {{nameService}}ServiceInterface
+{
+
+}
