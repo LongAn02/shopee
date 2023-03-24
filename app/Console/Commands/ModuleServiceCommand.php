@@ -33,6 +33,8 @@ class ModuleServiceCommand extends Command
         $nameModule = $this->argument('nameModule');
 
         $this->service($nameService, $nameModule);
+        $this->interface($nameService, $nameModule);
+
         return Command::SUCCESS;
     }
 
@@ -53,23 +55,23 @@ class ModuleServiceCommand extends Command
             mkdir($path, 0777, true);
         }
         $requestTemplate = str_replace(
-            ['{{nameModule}}'],
-            ['{{nameService}}'],
+            ['{{nameModule}}', '{{nameService}}'],
+            [$nameModule, $nameService],
             $this->getStub('service')
         );
         file_put_contents(base_path("/Modules/{$nameModule}/Services/{$nameService}Service.php"), $requestTemplate);
     }
 
-    protected function interface($name, $addFame)
+    protected function interface($nameService, $nameModule)
     {
-        if(!file_exists($path = app_path("/Domains/{$name}/Interface"))) {
+        if(!file_exists($path = base_path("/Modules/{$nameModule}/Interfaces"))) {
             mkdir($path, 0777, true);
         }
         $requestTemplate = str_replace(
-            ['{{modelName}}'],
-            [$addFame ?? $name],
+            ['{{nameModule}}', '{{nameService}}'],
+            [$nameModule, $nameService],
             $this->getStub('interface')
         );
-        file_put_contents(app_path("/Domains/{$name}/Interface/".($addFame ?? $name)."ServiceInterface.php"), $requestTemplate);
+        file_put_contents(base_path("/Modules/{$nameModule}/Interfaces/{$nameService}ServiceInterface.php"), $requestTemplate);
     }
 }

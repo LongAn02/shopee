@@ -8,6 +8,8 @@ use Illuminate\Routing\Controller;
 
 class MainCategoryController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      * @return Renderable

@@ -3,6 +3,7 @@
 namespace Modules\{{nameModule}}\Services;
 
 use App\Services\BaseService;
+use Modules\{{nameModule}}\Entities\{{nameModule}};
 use Modules\{{nameModule}}\Interfaces\{{nameService}}ServiceInterface;
 
 class {{nameService}}Service extends BaseService implements {{nameService}}ServiceInterface
