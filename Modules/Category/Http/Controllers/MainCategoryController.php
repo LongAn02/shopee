@@ -5,75 +5,62 @@ namespace Modules\Category\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Category\Entities\MainCategory;
+use Modules\Category\Http\Requests\MainCategoryRequest;
+use Modules\Category\Interfaces\MainCategoryServiceInterface;
 
 class MainCategoryController extends Controller
 {
+    protected $mainCategoryService;
 
+    public function __construct(
+        MainCategoryServiceInterface $mainCategoryService
+    ) {
+        $this->mainCategoryService = $mainCategoryService;
+    }
 
     /**
-     * Display a listing of the resource.
-     * @return Renderable
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
-        return view('category::index');
+        $mainCategories = $this->mainCategoryService->getAllMainCategory();
+        return view('category::main_category.index', compact('mainCategories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
     public function create()
     {
-        return view('category::create');
+        return view('category::main_category.create');
     }
 
     /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
+     * Handle: store|update|destroy
+     *
+     * @param MainCategoryRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function handle(MainCategoryRequest $request, $id = null)
     {
-        //
+        $result = $this->mainCategoryService->handleMainCategory($request, $id);
+        return response()->json($result);
     }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
     public function show($id)
     {
-        return view('category::show');
+        $category = $this->mainCategoryService->show($id);
+        return view('category::main_category.modal', $category);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
     public function edit($id)
     {
         return view('category::edit');
     }
 
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
     public function destroy($id)
     {
         //

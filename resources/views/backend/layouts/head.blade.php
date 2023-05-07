@@ -13,6 +13,7 @@
 <meta property="og:url" content="http://pratikborsadiya.in/vali-admin">
 <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
 <meta property="og:description" content="Vali is a responsive and free dashboard theme/template built with Bootstrap 4, SASS and PUG.js.">
-<title>Vali Admin - Free Bootstrap 4 Dashboard Template</title>
+<title>@yield('title')</title>
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/main.css') }}">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{{ asset('toastr/toastr.min.css') }}">
